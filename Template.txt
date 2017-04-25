@@ -1,0 +1,13 @@
+switch(n)	jumpt <case 1>, n == 1; jumpt <case 2>, n != 1
+{
+	case 1:
+		<statements>
+		jump <end_of_switch>
+	case 2:	jumpt <case default>, n != 2
+		<statements>
+		jump <end_of_switch>
+	default:
+		<statements>
+		jump <end_of_switch>
+}
+end_of_switch:

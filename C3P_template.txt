@@ -1,0 +1,56 @@
+Pass By Value:
+
+Routine Call:
+// Allocate space for return value in caller's AR:
+set 1, D[1] + 1
+// Set return pointer in callee's AR (PA is the number of parameters):
+set D[1], ip + 4 + PA
+// Set dynamic link of the callee's AR to point to caller's AR:
+set D[1] + 1, D[0]
+// Set parameter arguement change into temporary cell 
+// (PA starts from 2, depends on the number of PA; 
+// TC depends on PA, starts after PA):
+set D[1] + PA, D[D[0] + TC]
+// Set FP to currently executing AR:
+set 0, D[1]
+// Set SP (AR is size of callee's AR):
+set 1, D[1] + AR
+// Jump to 1st instruction of callee:
+jump start_addr
+
+Routine Return:
+// Set SP (deallocate):
+set 1, D[0]
+// Set FP (re-activate caller):
+set 0, D[D[0] + 1]
+// Jump to stored return pointer:
+jump D[D[1]]
+
+
+Pass By Reference:
+
+Routine Call:
+// Allocate space for return value in caller's AR:
+set 1, D[1] + 1
+// Set return pointer in callee's AR (It is depended on the number of PA):
+set D[1], ip + 4 + PA
+// Set dynamic link of the callee's AR to point to caller's AR:
+set D[1] + 1, D[0]
+// Set global variable to parameter arguement 
+// (PA starts from 2 to the number that depends on the number of PA; 
+// VAR is the address of the variable's address):
+set D[1] + PA, VAR
+// Set FP to currently executing AR:
+set 0, D[1]
+// Set SP (AR is size of callee's AR):
+set 1, D[1] + AR
+// Jump to 1st instruction of callee:
+jump start_addr
+
+Routine Return:
+// Set SP (deallocate):
+set 1, D[0]
+// Set FP (re-activate caller):
+set 0, D[D[0] + 1]
+// Jump to stored return pointer:
+jump D[D[1]]

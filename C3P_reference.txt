@@ -1,0 +1,39 @@
+set 0, 3
+set 1, 5
+jump 30
+jumpt 8, D[D[0] + 2] > 2
+set D[0] - 1, 1
+set 1, D[0]
+set 0, D[D[1] + 1]
+jump D[D[1]]
+set D[0] + 2, D[D[0] + 2] - 2
+set 2, D[D[0] + 2]
+set 1, D[1] + 1
+set D[1], 17
+set D[1] + 1, D[0]
+set D[1] + 2, D[D[0] + 2]
+set 0, D[1]
+set 1, D[1] + 5
+jump 3
+set D[0] + 4, D[D[1] - 1]
+set D[0] + 2, D[D[0] + 2] - 1
+set D[1], 26
+set D[1] + 1, D[0]
+set D[1] + 2, D[D[0] + 2]
+set 2, D[D[0] + 2]
+set 0, D[1]
+set 1, D[1] + 5
+jump 3
+set D[0] - 1, D[D[1] -1] + D[D[0] + 4]
+set 1, D[0]
+set 0, D[D[1] + 1]
+jump D[D[1]]
+set 2, read
+set 1, D[1] + 1
+set D[1], 38
+set D[1] + 1, D[0]
+set D[1] + 2, D[2]
+set 0, D[1]
+set 1, D[1] + 5
+jump 3
+halt
